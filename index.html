@@ -285,7 +285,7 @@
             fetch(FORM_URL, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: new FormData(form)
+                body: new URLSearchParams(new FormData(form))
             }).then(() => {
                 form.classList.add('hidden');
                 successMessage.classList.remove('hidden');
