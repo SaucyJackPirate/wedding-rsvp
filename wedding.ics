@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Bryan and Donna Wedding//RSVP Site//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:bryan-donna-wedding-2026@wedding-rsvp.github.io
+DTSTAMP:20260812T000000Z
+DTSTART:20261031T133000Z
+DTEND:20261031T230000Z
+SUMMARY:Bryan & Donna's Wedding
+DESCRIPTION:Join us as we celebrate our wedding day! Ceremony begins at 1:30 PM.
+LOCATION:Piersland House Hotel\, Craigend Road\, Troon KA10 6HD
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR
