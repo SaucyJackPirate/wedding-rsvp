@@ -1,0 +1,299 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bryan & Donna | Wedding RSVP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script></head><body class="bg-[#fafaf9] text-[#1c1917] font-sans antialiased">
+
+    <!-- Hero Section -->
+    <header class="relative h-[60vh] min-h-[400px] w-full bg-[#1c1917] flex items-center justify-center">
+        <img src="hero.webp" alt="Bryan and Donna" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <div class="relative z-10 text-center px-4 text-white">
+            <h1 class="font-serif text-5xl md:text-7xl mb-4 tracking-wide">Bryan & Donna</h1>
+            <p class="text-lg md:text-xl font-light tracking-widest uppercase mb-2">October 31, 2026</p>
+            <p class="text-md md:text-lg font-light">Piersland House, Troon</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-2xl mx-auto px-6 py-16">
+        <section class="text-center mb-16">
+            <h2 class="font-serif text-3xl mb-6">Join Us to Celebrate</h2>
+            <p class="text-gray-600 leading-relaxed mb-8">
+                Please let us know if you are able to join us by completing the RSVP form below. The ceremony begins promptly at 1:30 PM.
+            </p>
+            <img src="venue.webp" alt="Piersland House" class="w-full h-64 object-cover rounded-lg shadow-sm">
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- OUR PHOTOS — add as many <img> tags here as you like.         -->
+        <!-- 1. Compress each photo to .webp at squoosh.app                -->
+        <!-- 2. Upload it to the repo root (or an /images folder)         -->
+        <!-- 3. Copy one of the two blocks below per photo and rename src -->
+        <!-- ============================================================ -->
+        <section class="mb-16">
+            <h2 class="font-serif text-3xl mb-6 text-center">Us</h2>
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Example photo 1 — rename engagement-1.webp to your file -->
+                <img src="engagement-1.webp" alt="Bryan and Donna" class="w-full h-48 object-cover rounded-lg shadow-sm">
+                <!-- Example photo 2 — rename engagement-2.webp to your file -->
+                <img src="engagement-2.webp" alt="Bryan and Donna" class="w-full h-48 object-cover rounded-lg shadow-sm">
+                <!-- COPY THIS COMMENT + <img> LINE BELOW FOR EACH ADDITIONAL PHOTO
+                <img src="another-photo.webp" alt="Bryan and Donna" class="w-full h-48 object-cover rounded-lg shadow-sm">
+                -->
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- ADD TO CALENDAR — no backend needed, both options are static -->
+        <!-- ============================================================ -->
+        <section class="mb-16 text-center">
+            <h2 class="font-serif text-3xl mb-6">Save the Date</h2>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="wedding.ics" download
+                   class="inline-block px-6 py-3 rounded-md border border-gray-300 bg-white hover:bg-gray-50 transition-colors text-sm font-medium">
+                    📅 Add to Apple / Outlook Calendar
+                </a>
+                <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Bryan%20%26%20Donna%27s%20Wedding&dates=20261031T133000Z/20261031T230000Z&details=Join%20us%20to%20celebrate%20Bryan%20%26%20Donna%27s%20wedding!&location=Piersland%20House%20Hotel%2C%20Craigend%20Road%2C%20Troon%20KA10%206HD"
+                   target="_blank" rel="noopener"
+                   class="inline-block px-6 py-3 rounded-md border border-gray-300 bg-white hover:bg-gray-50 transition-colors text-sm font-medium">
+                    📅 Add to Google Calendar
+                </a>
+            </div>
+        </section>
+
+        <!-- RSVP Form -->
+        <form id="rsvpForm" class="space-y-6 bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+            <h2 class="font-serif text-3xl mb-6 text-center">RSVP</h2>
+
+            <!-- Guest 1 Name Dropdown -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                <select name="entry.1217990437" required class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-lg">
+                    <option value="" disabled selected>Find your name...</option>
+                    <!-- ============================================================ -->
+                    <!-- PASTE YOUR 60-GUEST LIST HERE. Format for every guest:        -->
+                    <!-- <option value="Full Name">Full Name</option>                  -->
+                    <!-- Example (delete these two lines once you paste your real list):-->
+                    <option value="Alan Bridgeman">Alan Bridgeman</option>
+<option value="Alec McAllister">Alec McAllister</option>
+<option value="Alec Sharpe">Alec Sharpe</option>
+<option value="Angela Stewart">Angela Stewart</option>
+<option value="Ashleigh">Ashleigh</option>
+<option value="Becky Devlin">Becky Devlin</option>
+<option value="Bobby Goodfellow">Bobby Goodfellow</option>
+<option value="Brian Stewart">Brian Stewart</option>
+<option value="Brooke Murphy">Brooke Murphy</option>
+<option value="Bryan Stewart">Bryan Stewart</option>
+<option value="Caroline">Caroline</option>
+<option value="Charlene">Charlene</option>
+<option value="Chris McClymont">Chris McClymont</option>
+<option value="Chris Sproat">Chris Sproat</option>
+<option value="Debbie">Debbie</option>
+<option value="Debbie Bamford">Debbie Bamford</option>
+<option value="Denis Smith">Denis Smith</option>
+<option value="Dionne Hair">Dionne Hair</option>
+<option value="Donna Sharpe">Donna Sharpe</option>
+<option value="Emily Cheyne">Emily Cheyne</option>
+<option value="Emma Bridgeman">Emma Bridgeman</option>
+<option value="Gary Stewart">Gary Stewart</option>
+<option value="Gillian Cheyne">Gillian Cheyne</option>
+<option value="Graeme Paris">Graeme Paris</option>
+<option value="Greg Waddell">Greg Waddell</option>
+<option value="Greig Sharpe">Greig Sharpe</option>
+<option value="Jackie Sharpe">Jackie Sharpe</option>
+<option value="Janette Nicol">Janette Nicol</option>
+<option value="Jimmy Nicol">Jimmy Nicol</option>
+<option value="John">John</option>
+<option value="Kaitlyn Stewart">Kaitlyn Stewart</option>
+<option value="Karen Steele">Karen Steele</option>
+<option value="Kayleigh Carmichael">Kayleigh Carmichael</option>
+<option value="Kevlyn McCormack">Kevlyn McCormack</option>
+<option value="Kiara Doyle">Kiara Doyle</option>
+<option value="Lindsay Speirs">Lindsay Speirs</option>
+<option value="Lorraine Cheyne">Lorraine Cheyne</option>
+<option value="Lorraine Work">Lorraine Work</option>
+<option value="Louise Waddell">Louise Waddell</option>
+<option value="Marion Smith">Marion Smith</option>
+<option value="Mark Cheyne">Mark Cheyne</option>
+<option value="Mary McAllister">Mary McAllister</option>
+<option value="Morgan Murphy">Morgan Murphy</option>
+<option value="Murray Devlin">Murray Devlin</option>
+<option value="Nathan allen">Nathan allen</option>
+<option value="Nyree">Nyree</option>
+<option value="Riann Allen">Riann Allen</option>
+<option value="Rita Hair">Rita Hair</option>
+<option value="Scott">Scott</option>
+<option value="Simon Lindsay">Simon Lindsay</option>
+<option value="Stanley Hair Jr">Stanley Hair Jr</option>
+<option value="Stuart Murphy">Stuart Murphy</option>
+<option value="Susan Allen">Susan Allen</option>
+<option value="Tommy Waugh">Tommy Waugh</option>
+<option value="Toni McClymont">Toni McClymont</option>
+<option value="Uncle Stanley Hair">Uncle Stanley Hair</option>
+<option value="Zoe Stewart">Zoe Stewart</option>
+                    <!-- ============================================================ -->
+					
+                </select>
+            </div>
+
+            <!-- Attendance -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Will you be attending?</label>
+                <select name="entry.939758595" required class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-lg">
+                    <option value="" disabled selected>Please select...</option>
+                    <option value="Joyfully accepts">Joyfully accepts</option>
+                    <option value="Regretfully declines">Regretfully declines</option>
+                </select>
+            </div>
+
+            <!-- Guest 1 Diet -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Your Dietary Requirements / Allergies</label>
+                <textarea name="entry.1955469240" rows="2" placeholder="Leave blank if none" class="w-full px-4 py-3 rounded-md border border-gray-300"></textarea>
+            </div>
+
+            <!-- Partner Toggle Box -->
+            <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+                <label class="flex items-center cursor-pointer">
+                    <input type="checkbox" id="addGuestToggle" class="w-5 h-5 text-stone-900 rounded border-gray-300">
+                    <span class="ml-3 text-gray-700 font-medium">I am RSVPing for my partner / plus-one</span>
+                </label>
+            </div>
+
+            <!-- Guest 2 Container (Hidden by default) -->
+            <div id="guest2Container" class="hidden border-l-4 border-stone-800 pl-4 space-y-4">
+                <h3 class="font-serif text-xl">Guest 2 Details</h3>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Partner's Name</label>
+                    <select id="guest2Name" name="entry.1955469240" class="w-full px-4 py-3 rounded-md border border-gray-300 bg-white text-lg">
+                        <option value="" disabled selected>Find their name...</option>
+                        <!-- PASTE THE EXACT SAME GUEST LIST HERE (same <option> lines as above) -->
+                        <option value="Alan Bridgeman">Alan Bridgeman</option>
+<option value="Alec McAllister">Alec McAllister</option>
+<option value="Alec Sharpe">Alec Sharpe</option>
+<option value="Angela Stewart">Angela Stewart</option>
+<option value="Ashleigh">Ashleigh</option>
+<option value="Becky Devlin">Becky Devlin</option>
+<option value="Bobby Goodfellow">Bobby Goodfellow</option>
+<option value="Brian Stewart">Brian Stewart</option>
+<option value="Brooke Murphy">Brooke Murphy</option>
+<option value="Bryan Stewart">Bryan Stewart</option>
+<option value="Caroline">Caroline</option>
+<option value="Charlene">Charlene</option>
+<option value="Chris McClymont">Chris McClymont</option>
+<option value="Chris Sproat">Chris Sproat</option>
+<option value="Debbie">Debbie</option>
+<option value="Debbie Bamford">Debbie Bamford</option>
+<option value="Denis Smith">Denis Smith</option>
+<option value="Dionne Hair">Dionne Hair</option>
+<option value="Donna Sharpe">Donna Sharpe</option>
+<option value="Emily Cheyne">Emily Cheyne</option>
+<option value="Emma Bridgeman">Emma Bridgeman</option>
+<option value="Gary Stewart">Gary Stewart</option>
+<option value="Gillian Cheyne">Gillian Cheyne</option>
+<option value="Graeme Paris">Graeme Paris</option>
+<option value="Greg Waddell">Greg Waddell</option>
+<option value="Greig Sharpe">Greig Sharpe</option>
+<option value="Jackie Sharpe">Jackie Sharpe</option>
+<option value="Janette Nicol">Janette Nicol</option>
+<option value="Jimmy Nicol">Jimmy Nicol</option>
+<option value="John">John</option>
+<option value="Kaitlyn Stewart">Kaitlyn Stewart</option>
+<option value="Karen Steele">Karen Steele</option>
+<option value="Kayleigh Carmichael">Kayleigh Carmichael</option>
+<option value="Kevlyn McCormack">Kevlyn McCormack</option>
+<option value="Kiara Doyle">Kiara Doyle</option>
+<option value="Lindsay Speirs">Lindsay Speirs</option>
+<option value="Lorraine Cheyne">Lorraine Cheyne</option>
+<option value="Lorraine Work">Lorraine Work</option>
+<option value="Louise Waddell">Louise Waddell</option>
+<option value="Marion Smith">Marion Smith</option>
+<option value="Mark Cheyne">Mark Cheyne</option>
+<option value="Mary McAllister">Mary McAllister</option>
+<option value="Morgan Murphy">Morgan Murphy</option>
+<option value="Murray Devlin">Murray Devlin</option>
+<option value="Nathan allen">Nathan allen</option>
+<option value="Nyree">Nyree</option>
+<option value="Riann Allen">Riann Allen</option>
+<option value="Rita Hair">Rita Hair</option>
+<option value="Scott">Scott</option>
+<option value="Simon Lindsay">Simon Lindsay</option>
+<option value="Stanley Hair Jr">Stanley Hair Jr</option>
+<option value="Stuart Murphy">Stuart Murphy</option>
+<option value="Susan Allen">Susan Allen</option>
+<option value="Tommy Waugh">Tommy Waugh</option>
+<option value="Toni McClymont">Toni McClymont</option>
+<option value="Uncle Stanley Hair">Uncle Stanley Hair</option>
+<option value="Zoe Stewart">Zoe Stewart</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Partner's Dietary Requirements</label>
+                    <textarea name="entry.34774029" rows="2" placeholder="Leave blank if none" class="w-full px-4 py-3 rounded-md border border-gray-300"></textarea>
+                </div>
+            </div>
+
+            <!-- Song Request -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">I promise to dance if you play...</label>
+                <input type="text" name="entry.848559298" placeholder="Artist & Song Title" class="w-full px-4 py-3 rounded-md border border-gray-300">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="submitBtn" class="w-full bg-[#1c1917] text-white font-medium text-lg py-4 rounded-md hover:bg-black transition-colors">
+                Send RSVP
+            </button>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="hidden text-center py-12">
+            <h3 class="font-serif text-2xl mb-2">Thank You!</h3>
+            <p class="text-gray-600">Your RSVP has been successfully received.</p>
+        </div>
+    </main>
+
+    <!-- Script Logic -->
+    <script>
+        const toggle = document.getElementById('addGuestToggle');
+        const container = document.getElementById('guest2Container');
+        const guest2NameInput = document.getElementById('guest2Name');
+
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                container.classList.remove('hidden');
+                guest2NameInput.setAttribute('required', 'true');
+            } else {
+                container.classList.add('hidden');
+                guest2NameInput.removeAttribute('required');
+                guest2NameInput.value = '';
+            }
+        });
+
+        const form = document.getElementById('rsvpForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const successMessage = document.getElementById('successMessage');
+
+        // PASTE YOUR EXTRACTED GOOGLE FORM POST URL HERE
+        const FORM_URL = 'https://docs.google.com/forms/d/e/1J4s-n2EhvjFntEmaj9h-aJ1VsfRhWRyxyu0WMK99OX8/formResponse';
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            submitBtn.innerHTML = 'Sending...';
+            submitBtn.disabled = true;
+
+            fetch(FORM_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: new FormData(form)
+            }).then(() => {
+                form.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }).catch(() => {
+                alert('There was a problem submitting your RSVP. Please try again.');
+                submitBtn.innerHTML = 'Send RSVP';
+                submitBtn.disabled = false;
+            });
+        });
+    </script></body></html>
