@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8e6e8">
+  <title>Share your photos | Bryan &amp; Donna</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== THEME: white and blush pink ===== */
+    :root {
+      --backdrop: #f8e6e8;   /* page background (blush) */
+      --panel:    #ffffff;   /* the arch and viewer */
+      --ink:      #3a2a2f;   /* main text */
+      --muted:    #6d545b;   /* secondary text */
+      --accent:   #f1cbd2;   /* button */
+      --accent-hover: #ebbac4;
+      --accent-text: #4f2430;
+      --rose:     #d99aa8;   /* outlines */
+      --display: "Cormorant Garamond", Georgia, serif;
+      --body: "Figtree", system-ui, sans-serif;
+    }
+    /* ======================================= */
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+
+    body {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.5rem;
+      padding: 2.5rem 1rem 4rem;
+      background: var(--backdrop);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+
+    /* ---------- Header arch ---------- */
+    .arch {
+      width: min(100%, 26rem);
+      margin-top: 0.5rem;
+      padding: 5.5rem 2rem 3rem;
+      text-align: center;
+      background: var(--panel);
+      border: 1px solid var(--rose);
+      border-radius: 13rem 13rem 1rem 1rem;
+      outline: 1px solid var(--rose);
+      outline-offset: 8px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 600;
+      font-size: clamp(2.75rem, 12vw, 3.75rem);
+      line-height: 1.05;
+    }
+
+    .when {
+      margin: 1rem 0 0;
+      font-family: var(--display);
+      font-size: 1.25rem;
+      color: var(--muted);
+    }
+
+    .rule {
+      width: 3rem;
+      height: 1px;
+      margin: 1.75rem auto;
+      border: 0;
+      background: var(--rose);
+    }
+
+    .lead { margin: 0 auto 2rem; max-width: 22rem; }
+
+    .add {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      font: 600 1.125rem/1 var(--body);
+      color: var(--accent-text);
+      background: var(--accent);
+      border: 1px solid var(--rose);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .add:hover { background: var(--accent-hover); }
+    .add:focus-visible,
+    .tile:focus-visible,
+    .viewer-actions :is(button, a):focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+
+    .status { min-height: 1.6em; margin: 1.25rem 0 0; font-weight: 600; }
+    .note { margin: 0.5rem 0 0; font-size: 0.9375rem; color: var(--muted); }
+
+    /* ---------- Gallery ---------- */
+    .gallery { width: min(100%, 64rem); }
+
+    .gallery-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.25rem 1rem;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 600;
+      font-size: 2.25rem;
+      line-height: 1.1;
+    }
+
+    .count { margin: 0; color: var(--muted); font-size: 0.9375rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+      gap: 0.5rem;
+    }
+
+    .tile {
+      position: relative;
+      padding: 0;
+      border: 0;
+      aspect-ratio: 1;
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--panel);
+      cursor: pointer;
+    }
+    .tile img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    .tile.video::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 2.75rem; height: 2.75rem;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.92);
+    }
+    .tile.video::after {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-30%, -50%);
+      border-left: 0.9rem solid var(--accent-text);
+      border-top: 0.6rem solid transparent;
+      border-bottom: 0.6rem solid transparent;
+    }
+
+    .empty, .error { margin: 2rem 0; text-align: center; color: var(--muted); }
+
+    /* ---------- Viewer ---------- */
+    dialog.viewer {
+      width: min(94vw, 56rem);
+      max-height: 94dvh;
+      padding: 0;
+      border: 0;
+      border-radius: 12px;
+      background: var(--panel);
+      color: var(--ink);
+    }
+    dialog.viewer::backdrop { background: rgba(58, 42, 47, 0.6); }
+
+    .viewer-media { display: grid; place-items: center; background: #fff; }
+    .viewer-media img,
+    .viewer-media video { display: block; max-width: 100%; max-height: 78dvh; }
+
+    .viewer-actions {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+    }
+    .viewer-actions :is(button, a) {
+      padding: 0.6rem 1.25rem;
+      font: 600 1rem/1 var(--body);
+      color: var(--accent-text);
+      background: var(--accent);
+      border: 1px solid var(--rose);
+      border-radius: 999px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main class="arch">
+    <h1>Bryan &amp; Donna</h1>
+    <p class="when">31 October 2026, Piersland House</p>
+    <hr class="rule">
+    <p class="lead">Share your photos and videos from the day, and see everyone else’s below.</p>
+    <button id="upload" class="add" type="button">Add photos</button>
+    <p id="status" class="status" aria-live="polite"></p>
+    <p class="note">Patchy signal? Add them later when you’re back on Wi-Fi.</p>
+  </main>
+
+  <section class="gallery" aria-labelledby="gallery-title">
+    <div class="gallery-head">
+      <h2 id="gallery-title">Everyone’s photos</h2>
+      <p id="count" class="count"></p>
+    </div>
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="empty" hidden>No photos yet. Be the first to add one.</p>
+    <p id="error" class="error" hidden>The photos couldn’t load. Try refreshing the page.</p>
+    <p class="note" style="text-align:center">New photos from other guests appear within a minute.</p>
+  </section>
+
+  <dialog id="viewer" class="viewer" aria-label="Photo viewer">
+    <div id="media" class="viewer-media"></div>
+    <div class="viewer-actions">
+      <a id="download" href="#">Download</a>
+      <button id="close" type="button">Close</button>
+    </div>
+  </dialog>
+
+  <script src="https://upload-widget.cloudinary.com/global/all.js"></script>
+  <script>
+    // ===== SETTINGS: change these three if needed =====
+    const CLOUD  = 'puej1gi4';  // <-- paste your own cloud name here
+    const PRESET = 'wedding';          // <-- must match your unsigned upload preset
+    const TAG    = 'wedding';          // <-- every upload is tagged with this
+    // ==================================================
+
+    const BASE = 'https://res.cloudinary.com/' + CLOUD;
+    const items = new Map();
+    let firstLoadDone = false;
+    let uploaded = 0;
+
+    const grid   = document.getElementById('grid');
+    const count  = document.getElementById('count');
+    const empty  = document.getElementById('empty');
+    const error  = document.getElementById('error');
+    const status = document.getElementById('status');
+    const viewer = document.getElementById('viewer');
+    const media  = document.getElementById('media');
+    const dl     = document.getElementById('download');
+
+    const enc = id => id.split('/').map(encodeURIComponent).join('/');
+    const kind = it => it.type === 'video' ? 'video' : 'image';
+    const path = (it, t) => BASE + '/' + kind(it) + '/upload/' + t + '/v' + it.version + '/' + enc(it.id);
+
+    const thumbUrl = it => path(it, 'c_fill,w_400,h_400,q_auto' + (it.type === 'video' ? ',so_0' : '')) + '.jpg';
+    const fullUrl  = it => it.type === 'video' ? path(it, 'q_auto') + '.mp4' : path(it, 'c_limit,w_1600,q_auto') + '.jpg';
+    const downUrl  = it => path(it, 'fl_attachment') + (it.type === 'video' ? '.mp4' : '.jpg');
+
+    function render() {
+      const list = [...items.values()].sort((a, b) => b.created - a.created);
+      grid.replaceChildren();
+      list.forEach(it => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'tile' + (it.type === 'video' ? ' video' : '');
+        b.setAttribute('aria-label', it.type === 'video' ? 'Play video' : 'Open photo');
+        const img = document.createElement('img');
+        img.src = thumbUrl(it);
+        img.alt = '';
+        img.loading = 'lazy';
+        b.append(img);
+        b.addEventListener('click', () => openViewer(it));
+        grid.append(b);
+      });
+      count.textContent = list.length ? list.length + ' so far' : '';
+      empty.hidden = !(firstLoadDone && list.length === 0);
+    }
+
+    function openViewer(it) {
+      media.replaceChildren();
+      let el;
+      if (it.type === 'video') {
+        el = document.createElement('video');
+        el.src = fullUrl(it);
+        el.controls = true;
+        el.autoplay = true;
+        el.playsInline = true;
+      } else {
+        el = document.createElement('img');
+        el.src = fullUrl(it);
+        el.alt = 'Guest photo';
+      }
+      media.append(el);
+      dl.href = downUrl(it);
+      viewer.showModal();
+    }
+
+    viewer.addEventListener('close', () => media.replaceChildren());
+    viewer.addEventListener('click', e => { if (e.target === viewer) viewer.close(); });
+    document.getElementById('close').addEventListener('click', () => viewer.close());
+
+    async function getList(type) {
+      try {
+        const r = await fetch(BASE + '/' + type + '/list/' + TAG + '.json');
+        if (r.status === 404) return { ok: true, res: [] };   // nothing of this type yet
+        if (!r.ok) return { ok: false, status: r.status, res: [] };
+        const j = await r.json();
+        return { ok: true, res: j.resources || [] };
+      } catch (e) {
+        return { ok: false, res: [] };
+      }
+    }
+
+    async function refresh() {
+      const [imgs, vids] = await Promise.all([getList('image'), getList('video')]);
+      let changed = !firstLoadDone;
+
+      [[imgs, 'image'], [vids, 'video']].forEach(([r, type]) => {
+        r.res.forEach(x => {
+          if (!items.has(x.public_id)) {
+            items.set(x.public_id, {
+              id: x.public_id,
+              version: x.version,
+              type: type,
+              created: Date.parse(x.created_at) || Date.now()
+            });
+            changed = true;
+          }
+        });
+      });
+
+      if (!imgs.ok && !vids.ok) {
+        console.warn('Gallery list failed. In Cloudinary: Settings > Security > clear "Resource list" under restricted image types. Status:', imgs.status);
+        error.hidden = items.size > 0;
+      } else {
+        error.hidden = true;
+      }
+
+      firstLoadDone = true;
+      if (changed) render();
+    }
+
+    const widget = cloudinary.createUploadWidget({
+      cloudName: CLOUD,
+      uploadPreset: PRESET,
+      tags: [TAG],
+      sources: ['local', 'camera'],
+      multiple: true,
+      maxFileSize: 100000000,
+      clientAllowedFormats: ['image', 'video'],
+      styles: {
+        palette: {
+          window: '#ffffff',
+          sourceBg: '#fdf3f4',
+          windowBorder: '#d99aa8',
+          tabIcon: '#b4546a',
+          inactiveTabIcon: '#8a7077',
+          menuIcons: '#b4546a',
+          link: '#b4546a',
+          action: '#b4546a',
+          inProgress: '#d99aa8',
+          complete: '#2f7d5b',
+          error: '#b3261e',
+          textDark: '#3a2a2f',
+          textLight: '#ffffff'
+        }
+      }
+    }, (err, result) => {
+      if (!err && result && result.event === 'success') {
+        uploaded++;
+        status.textContent = uploaded + ' added. Thank you!';
+        const info = result.info;
+        // Show your own uploads straight away; everyone else's arrive via the list
+        items.set(info.public_id, {
+          id: info.public_id,
+          version: info.version,
+          type: info.resource_type === 'video' ? 'video' : 'image',
+          created: Date.now()
+        });
+        render();
+      }
+    });
+
+    document.getElementById('upload').addEventListener('click', () => widget.open());
+
+    refresh();
+    setInterval(refresh, 30000);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) refresh(); });
+  </script>
+</body>
+</html>
