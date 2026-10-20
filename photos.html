@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Share Your Photos</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-stone-50 flex items-center justify-center p-6">
+  <main class="max-w-md text-center">
+    <h1 class="text-3xl font-serif mb-3">Bryan &amp; Donna</h1>
+    <p class="text-stone-600 mb-8">Share your photos and videos from our day. Tap below to add them.</p>
+    <button id="upload" class="w-full bg-stone-800 text-white text-lg rounded-xl py-4">
+      Upload photos
+    </button>
+    <p id="count" class="mt-6 text-stone-500"></p>
+  </main>
+
+  <script src="https://upload-widget.cloudinary.com/global/all.js"></script>
+  <script>
+    let uploaded = 0;
+    const widget = cloudinary.createUploadWidget({
+      cloudName: 'puej1gi4',
+      uploadPreset: 'wedding',
+      sources: ['local', 'camera'],
+      multiple: true,
+      maxFileSize: 100000000,
+      clientAllowedFormats: ['image', 'video']
+    }, (error, result) => {
+      if (!error && result && result.event === 'success') {
+        uploaded++;
+        document.getElementById('count').textContent =
+          uploaded + ' uploaded. Thank you!';
+      }
+    });
+    document.getElementById('upload').addEventListener('click', () => widget.open());
+  </script>
+</body>
+</html>
